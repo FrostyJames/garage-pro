@@ -19,3 +19,15 @@ def add_customer(name, phone, email, address):
     session.add(customer)
     session.commit()
     click.echo(f"✅ Added customer: {name}")
+
+@cli.command()
+@click.option('--customer-id', prompt='Customer ID', type=int)
+@click.option('--make', prompt='Vehicle make')
+@click.option('--model', prompt='Vehicle model')
+@click.option('--year', prompt='Year', type=int)
+def add_vehicle(customer_id, make, model, year):
+    session = SessionLocal()
+    vehicle = Vehicle(make=make, model=model, year=year, customer_id=customer_id)
+    session.add(vehicle)
+    session.commit()
+    click.echo(f"✅ Added vehicle: {make} {model} ({year})")
