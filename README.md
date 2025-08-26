@@ -54,6 +54,12 @@ garagepro-cli/
 Run the CLI via main.py:
 python main.py [command]
 
+## Available Commands:
+- add-customer – Register a new customer
+- add-vehicle – Add a vehicle to a customer
+- log-service – Log a service record for a vehicle
+- view-history – View service history for a vehicle
+- filter-vehicles – Search vehicles by make/model/year
 
 
 
