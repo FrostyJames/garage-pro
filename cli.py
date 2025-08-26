@@ -60,3 +60,28 @@ def view_history(vehicle_id):
         return
     for r in records:
         click.echo(f"{r.date} | {r.service_type} | Ksh {r.cost} | {r.notes}")
+
+@cli.command()
+@click.option('--make', default=None, help='Filter by vehicle make')
+@click.option('--model', default=None, help='Filter by vehicle model')
+@click.option('--year', default=None, type=int, help='Filter by manufacture year')
+def filter_vehicles(make, model, year):
+    """Filter vehicles by make, model, or year."""
+    session = SessionLocal()
+    query = session.query(Vehicle)
+
+    if make:
+        query = query.filter(Vehicle.make.ilike(f"%{make}%"))
+    if model:
+        query = query.filter(Vehicle.model.ilike(f"%{model}%"))
+    if year:
+        query = query.filter(Vehicle.year == year)
+
+    results = query.all()
+    if not results:
+        click.echo("❌ No vehicles match the given filters.")
+        return
+
+    click.echo("🔍 Matching Vehicles:")
+    for v in results:
+        click.echo(f"- ID: {v.id} | {v.make} {v.model} ({v.year}) | Owner ID: {v.customer_id}")
