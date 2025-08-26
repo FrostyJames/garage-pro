@@ -49,3 +49,14 @@ def log_service(vehicle_id, type, notes, cost):
     session.add(service)
     session.commit()
     click.echo(f"✅ Logged service: {type} for vehicle {vehicle_id}")
+
+@cli.command()
+@click.option('--vehicle-id', prompt='Vehicle ID', type=int)
+def view_history(vehicle_id):
+    session = SessionLocal()
+    records = session.query(ServiceRecord).filter_by(vehicle_id=vehicle_id).all()
+    if not records:
+        click.echo("No service records found.")
+        return
+    for r in records:
+        click.echo(f"{r.date} | {r.service_type} | Ksh {r.cost} | {r.notes}")
