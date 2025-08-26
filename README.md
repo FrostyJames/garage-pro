@@ -48,3 +48,14 @@ garagepro-cli/
    pip install sqlalchemy alembic click
    alembic init migrations
    sqlalchemy.url = sqlite:///garagepro.db
+
+
+## CLI Usage
+Run the CLI via main.py:
+python main.py [command]
+
+
+
+
+
+
