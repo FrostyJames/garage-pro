@@ -18,11 +18,13 @@ class Customer(Base):
 
 class Vehicle(Base):
     __tablename__ = 'vehicles'
+
     id = Column(Integer, primary_key=True)
-    make = Column(String)
+    make = Column(String, nullable=False)
     model = Column(String)
     year = Column(Integer)
     customer_id = Column(Integer, ForeignKey('customers.id'))
+
     customer = relationship("Customer", back_populates="vehicles")
     service_records = relationship("ServiceRecord", back_populates="vehicle")
 
