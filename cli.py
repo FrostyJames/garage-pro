@@ -5,7 +5,7 @@ from datetime import datetime
 
 @click.group()
 def cli():
-    """GaragePro CLI - Manage customers, vehicles, and service records."""
+    """Welcome to GaragePro CLI - Manage customers, vehicles, and service records."""
     pass
 
 @cli.command()
