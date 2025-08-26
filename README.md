@@ -2,11 +2,15 @@
 
 GaragePro is a command-line Python application for managing vehicle service records in an auto garage. It uses SQLAlchemy for ORM, Alembic for migrations, and Click for CLI interactions.
 
-## Features
-- Register customers and vehicles
-- Log service records
-- Filter vehicles by make/model/year
-- Track service costs
+## 🚀 Features
+
+- Register customers and their vehicles
+- Log service records with cost and notes
+- View service history for any vehicle
+- Built-in CLI interface using Click
+- SQLite database with Alembic migrations
+
+---
 
 ## Tech Stack
 - Python
@@ -20,3 +24,27 @@ GaragePro is a command-line Python application for managing vehicle service reco
 2. Create a virtual environment
 3. Install dependencies
 4. Run Alembic migrations
+
+## 🗂️ Project Structure
+garagepro-cli/ 
+├── cli.py  
+├── database.py        
+├── main.py             
+├── models.py           
+├── migrations/       
+├── alembic.ini        
+├── garagepro.db        
+└── README.md           
+
+---
+
+## ⚙️ Setup Instructions
+
+1. Clone the repository:
+   ```bash
+   git clone <your-repo-url>
+   cd garagepro-cli
+   python -m venv venv
+   pip install sqlalchemy alembic click
+   alembic init migrations
+   sqlalchemy.url = sqlite:///garagepro.db
