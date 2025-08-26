@@ -5,12 +5,15 @@ from database import Base
 
 class Customer(Base):
     __tablename__ = 'customers'
+
     id = Column(Integer, primary_key=True)
-    name = Column(String)
+    name = Column(String, nullable=False)
     phone_number = Column(String)
     email = Column(String)
     address = Column(String)
+
     vehicles = relationship("Vehicle", back_populates="customer")
+
 
 
 class Vehicle(Base):
