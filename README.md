@@ -61,6 +61,9 @@ python main.py [command]
 - view-history – View service history for a vehicle
 - filter-vehicles – Search vehicles by make/model/year
 
+## Author
+James Ivan
+
 
 
 
